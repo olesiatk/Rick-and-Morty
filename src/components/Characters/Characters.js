@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { PopUp } from '../PopUp'; 
 
 import { TablePaginationActions } from '../pagination'
 // import PropTypes from 'prop-types';
@@ -11,13 +12,14 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 
+
+
 import TextField from '@material-ui/core/TextField';
 
 import { FilterStatus } from '../FilterStatus';
 import { FilterGender } from '../FilterGender';
 
 export const Characters = ({ characters }) => {
-  console.log(characters[0]);
 
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState(characters);
@@ -34,7 +36,6 @@ export const Characters = ({ characters }) => {
       {key: 'image', name: 'Image'},
       {key: 'name', name: 'Name'},
       {key: 'status', name: 'Status'},
-      {key: 'species', name: 'Species'},
       {key: 'gender', name: 'Gender'},
     ])
   }, [])
@@ -122,12 +123,13 @@ export const Characters = ({ characters }) => {
             : rows
             ).map((row, i) => (
             <TableRow key={row.id}>
-              <TableCell width='10%'>
-                <img alt={row.name} src={row.image} width="50" height="50"></img>
+              <TableCell width='20%'>
+                <PopUp 
+                  character={row}
+                />
               </TableCell>
-              <TableCell width='30%'>{row.name}</TableCell>
+              <TableCell width='40%'>{row.name}</TableCell>
               <TableCell width='20%'>{row.status}</TableCell>
-              <TableCell width='20%'>{row.species}</TableCell>
               <TableCell width='20%'>{row.gender}</TableCell>
             </TableRow>
           ))}

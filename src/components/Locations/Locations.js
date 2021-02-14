@@ -11,7 +11,6 @@ import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
 
 export const Locations = ({ locations }) => {
-  console.log(locations[0]);
 
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState(locations);

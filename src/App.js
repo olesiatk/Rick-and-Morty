@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { getLinks, getCharacters, getEpisodes, getLocations } from './api/api'
+import { getCharacters, getEpisodes, getLocations } from './api/api'
 import { Characters } from './components/Characters/Characters'
 import { Locations } from './components/Locations/Locations'
 import { Episodes } from './components/Episodes/Episodes'
@@ -16,22 +16,34 @@ import PersonPinIcon from '@material-ui/icons/PersonPin';
 import './App.css';
 
 function App() {
-  const [links, setLinks] = useState({});
-  const [characters, setCharacters] = useState({});
-  const [locations, setLocations] = useState({});
-  const [episodes, setEpisodes] = useState({});
+  const [characters, setCharacters] = useState([]);
+  const [locations, setLocations] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
 
   const [value, setValue] = useState("Characters");
-
-  useEffect(() => {
-    getLinks().then(result => setLinks(result));;
-  }, []);
   
   useEffect(() => {
-    getCharacters(links).then(result => setCharacters(result.results));;
-    getLocations(links).then(result => setLocations(result.results));
-    getEpisodes(links).then(result => setEpisodes(result.results));
-  }, [links]);
+    for (let i =1; i<=34; i++) {
+      getCharacters(i).then(result => {
+        console.log(result);
+        setCharacters(prevCharacters => [...prevCharacters, ...result.results]);
+      });
+    }
+
+    for (let i =1; i<=6; i++) {
+      getLocations(i).then(result => {
+        console.log(result);
+        setLocations(prevLocations => [...prevLocations, ...result.results]);
+      });
+    }
+
+    for (let i =1; i<=3; i++) {
+      getEpisodes(i).then(result => {
+        console.log(result);
+        setEpisodes(prevEpisodes => [...prevEpisodes, ...result.results]);
+      });
+    }
+  }, []);
 
   return (
     <div className="App">
@@ -41,15 +53,14 @@ function App() {
           className="App__menu"
           value={value}
           onChange={(event, newValue) => {
-            console.log(value);
             setValue(newValue);
           }}
           showLabels
         >
-          <BottomNavigationAction style={{minWidth: 100}} label="Characters" value="Characters" icon={<PersonPinIcon />} />
-          <BottomNavigationAction style={{minWidth: 100}} label="Episodes" value="Episodes" icon={<FolderIcon />} />
-          <BottomNavigationAction style={{minWidth: 100}} label="Locations" value="Locations" icon={<LocationOnIcon />} />
-          <BottomNavigationAction style={{minWidth: 100}} label="My watch list" value="WatchList" icon={<FavoriteIcon />} />
+          <BottomNavigationAction label="Characters" value="Characters" icon={<PersonPinIcon />} />
+          <BottomNavigationAction label="Episodes" value="Episodes" icon={<FolderIcon />} />
+          <BottomNavigationAction label="Locations" value="Locations" icon={<LocationOnIcon />} />
+          <BottomNavigationAction style={{minWidth: 115}} label="My watch list" value="WatchList" icon={<FavoriteIcon />} />
         </BottomNavigation>
       </header>
       <main>

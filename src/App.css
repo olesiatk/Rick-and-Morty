@@ -7,7 +7,7 @@
 
 .App-header {
   background: no-repeat left/contain url("img/PikPng.com_rick-and-morty-logo_1058513.png");
-  display: flex;
+  display: flex; 
   flex-direction: row;
   justify-content: flex-end;
   font-size: calc(10px + 2vmin);

@@ -1,13 +1,10 @@
 const BaseURL = 'https://rickandmortyapi.com/api';
 
-export const getLinks = () => fetch(BaseURL)
-.then(response => response.json())
-
-export  const getCharacters = (links) => fetch(links.characters)
+export  const getCharacters = (page) => fetch(`${BaseURL}/character?page=${page}`)
   .then(response => response.json());
 
-export  const getLocations = (links) => fetch(links.locations)
+export  const getLocations = (page) => fetch(`${BaseURL}/location?page=${page}`)
   .then(response => response.json());
 
-export  const getEpisodes = (links) => fetch(links.episodes)
+export  const getEpisodes = (page) => fetch(`${BaseURL}/episode?page=${page}`)
   .then(response => response.json());
