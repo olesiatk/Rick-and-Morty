@@ -5,7 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 
-const useStyles1 = makeStyles((theme) => ({
+const useStyles1 = makeStyles(theme => ({
   root: {
     flexShrink: 0,
     marginLeft: theme.spacing(2.5),
@@ -27,15 +27,23 @@ export function TablePaginationActions(props) {
 
   return (
     <div className={classes.root}>
-      <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
-        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === 'rtl'
+          ? <KeyboardArrowRight />
+          : <KeyboardArrowLeft />}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="next page"
       >
-        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+        {theme.direction === 'rtl'
+          ? <KeyboardArrowLeft />
+          : <KeyboardArrowRight />}
       </IconButton>
     </div>
   );

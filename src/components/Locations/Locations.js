@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { TablePaginationActions } from '../pagination'
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -8,10 +7,11 @@ import TableCell from '@material-ui/core/TableCell';
 import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import TextField from '@material-ui/core/TextField';
+
+import { TablePaginationActions } from './UI/pagination';
+import { FilterFild } from './UI/FilterFild';
 
 export const Locations = ({ locations }) => {
-
   const [columns, setColumns] = useState([]);
   const [rows, setRows] = useState(locations);
   const [page, setPage] = useState(0);
@@ -20,36 +20,41 @@ export const Locations = ({ locations }) => {
   const [queryType, setQueryType] = useState('');
   const [queryDimension, setQueryDimension] = useState('');
 
-
   useEffect(() => {
     setColumns([
-      {key: 'name', name: 'Name'},
-      {key: 'type', name: 'Type'},
-      {key: 'dimension', name: 'Dimension'},
-    ])
-  }, [])
+      {
+        key: 'name', name: 'Name',
+      },
+      {
+        key: 'type', name: 'Type',
+      },
+      {
+        key: 'dimension', name: 'Dimension',
+      },
+    ]);
+  }, []);
 
   useEffect(() => {
     const newRows = locations
       .filter(location => location.name.toLowerCase()
-        .includes(queryName.toLocaleLowerCase())
-      );
+        .includes(queryName.toLocaleLowerCase()));
+
     setRows(newRows);
   }, [locations, queryName]);
 
   useEffect(() => {
     const newRows = locations
       .filter(location => location.type.toLowerCase()
-        .includes(queryType.toLocaleLowerCase())
-      );
+        .includes(queryType.toLocaleLowerCase()));
+
     setRows(newRows);
   }, [locations, queryType]);
 
   useEffect(() => {
     const newRows = locations
       .filter(location => location.dimension.toLowerCase()
-        .includes(queryDimension.toLocaleLowerCase())
-      );
+        .includes(queryDimension.toLocaleLowerCase()));
+
     setRows(newRows);
   }, [locations, queryDimension]);
 
@@ -65,53 +70,35 @@ export const Locations = ({ locations }) => {
   return (
     <div>
       <h1>Locations</h1>
-        <form noValidate autoComplete="off">
-      </form>
       {columns && rows && (
-          <Table className='Table' aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               {columns.map(header => (
-                <TableCell 
+                <TableCell
                   key={header.key}
                 >
-                  {header.key ==='name' ? (
-                    <TextField 
-                      label={header.name}
-                      variant="outlined" 
-                      type="text"
-                      className="new-todo"
-                      placeholder="Find me!"
-                      value={queryName}
-                      onChange={(e) => {
-                        setQueryName(e.target.value);
-                      }}
+                  {header.key === 'name' && (
+                    <FilterFild
+                      name={header.name}
+                      query={queryName}
+                      setQuery={setQueryName}
                     />
-                  ) : header.key ==='type' ? (
-                    <TextField 
-                      label={header.name}
-                      variant="outlined" 
-                      type="text"
-                      className="new-todo"
-                      placeholder="Find me!"
-                      value={queryType}
-                      onChange={(e) => {
-                        setQueryType(e.target.value);
-                    }}
-                  />
-                  ) : header.key === 'dimension' ? (
-                    <TextField 
-                      label={header.name}
-                      variant="outlined" 
-                      type="text"
-                      className="new-todo"
-                      placeholder="Find me!"
-                      value={queryDimension}
-                      onChange={(e) => {
-                        setQueryDimension(e.target.value);
-                      }}
+                  )}
+                  {header.key === 'type' && (
+                    <FilterFild
+                      name={header.name}
+                      query={queryType}
+                      setQuery={setQueryType}
                     />
-                  ) : header.name}
+                  )}
+                  {header.key === 'dimension' && (
+                    <FilterFild
+                      name={header.name}
+                      query={queryDimension}
+                      setQuery={setQueryDimension}
+                    />
+                  )}
                 </TableCell>
               ))}
             </TableRow>
@@ -120,18 +107,20 @@ export const Locations = ({ locations }) => {
             {(rowsPerPage > 0
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
-              ).map((row, i) => (
+            ).map((row, i) => (
               <TableRow key={row.id}>
-                <TableCell width='33%'>{row.name}</TableCell>
-                <TableCell width='33%'>{row.type}</TableCell>
-                <TableCell width='33%'>{row.dimension}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.type}</TableCell>
+                <TableCell>{row.dimension}</TableCell>
               </TableRow>
             ))}
           </TableBody>
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, {
+                  label: 'All', value: -1,
+                }]}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
@@ -147,6 +136,15 @@ export const Locations = ({ locations }) => {
           </TableFooter>
         </Table>
       )}
-      </div>
-  )
-}
+    </div>
+  );
+};
+
+Locations.propTypes = {
+  locations: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    nama: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    dimension: PropTypes.string.isRequired,
+  })).isRequired,
+};

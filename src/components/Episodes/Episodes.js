@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import { TablePaginationActions } from '../pagination'
-// import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
@@ -9,6 +8,8 @@ import TableFooter from '@material-ui/core/TableFooter';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import TextField from '@material-ui/core/TextField';
+
+import { TablePaginationActions } from './UI/pagination';
 
 export const Episodes = ({ episodes }) => {
   const [columns, setColumns] = useState([]);
@@ -19,17 +20,23 @@ export const Episodes = ({ episodes }) => {
 
   useEffect(() => {
     setColumns([
-      {key: 'name', name: 'Name'},
-      {key: 'episode', name: 'Episode'},
-      {key: 'air_date', name: 'Air date'},
-    ])
-  }, [])
+      {
+        key: 'name', name: 'Name',
+      },
+      {
+        key: 'episode', name: 'Episode',
+      },
+      {
+        key: 'air_date', name: 'Air date',
+      },
+    ]);
+  }, []);
 
   useEffect(() => {
     const newRows = episodes
       .filter(episode => episode.name.toLowerCase()
-        .includes(queryName.toLocaleLowerCase())
-      );
+        .includes(queryName.toLocaleLowerCase()));
+
     setRows(newRows);
   }, [episodes, queryName]);
 
@@ -45,20 +52,18 @@ export const Episodes = ({ episodes }) => {
   return (
     <div>
       <h1>Episodes</h1>
-        <form noValidate autoComplete="off">
-      </form>
       {columns && rows && (
-          <Table className='Table' aria-label="simple table">
+        <Table aria-label="simple table">
           <TableHead>
             <TableRow>
               {columns.map(header => (
-                <TableCell 
+                <TableCell
                   key={header.key}
                 >
-                  {header.key ==='name' ? (
-                    <TextField 
+                  {header.key === 'name' ? (
+                    <TextField
                       label={header.name}
-                      variant="outlined" 
+                      variant="outlined"
                       type="text"
                       className="new-todo"
                       placeholder="Find me!"
@@ -76,7 +81,7 @@ export const Episodes = ({ episodes }) => {
             {(rowsPerPage > 0
               ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : rows
-              ).map((row, i) => (
+            ).map((row, i) => (
               <TableRow key={row.id}>
                 <TableCell>{row.name}</TableCell>
                 <TableCell>{row.episode}</TableCell>
@@ -87,7 +92,9 @@ export const Episodes = ({ episodes }) => {
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, {
+                  label: 'All', value: -1,
+                }]}
                 count={rows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
@@ -103,6 +110,15 @@ export const Episodes = ({ episodes }) => {
           </TableFooter>
         </Table>
       )}
-      </div>
-  )
-}
+    </div>
+  );
+};
+
+Episodes.propTypes = {
+  episodes: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    nama: PropTypes.string.isRequired,
+    episode: PropTypes.string.isRequired,
+    air_data: PropTypes.string.isRequired,
+  })).isRequired,
+};
