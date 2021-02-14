@@ -1,41 +1,17 @@
 .App {
   font-family: Roboto;
   text-align: center;
+  background: no-repeat center/contain url("img/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png");
+
 }
 
 .App-header {
-  background-color: #282c34;
+  background: no-repeat left/contain url("img/PikPng.com_rick-and-morty-logo_1058513.png");
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-end;
   font-size: calc(10px + 2vmin);
   color: white;
+  border-bottom: 2px solid darkblue;
 }
 
-.App__menu-list {
- }
-
-.App__menu-link {
-  padding: 15px 30px;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.App__menu-link:hover {
-  color: #61dafb;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
