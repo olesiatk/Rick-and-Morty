@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/Rick-and-Morty/static/css/main.23147a8a.chunk.css",
-    "main.js": "/Rick-and-Morty/static/js/main.1154a5a2.chunk.js",
-    "main.js.map": "/Rick-and-Morty/static/js/main.1154a5a2.chunk.js.map",
-    "runtime-main.js": "/Rick-and-Morty/static/js/runtime-main.4dff5e11.js",
-    "runtime-main.js.map": "/Rick-and-Morty/static/js/runtime-main.4dff5e11.js.map",
-    "static/js/2.bb606597.chunk.js": "/Rick-and-Morty/static/js/2.bb606597.chunk.js",
-    "static/js/2.bb606597.chunk.js.map": "/Rick-and-Morty/static/js/2.bb606597.chunk.js.map",
-    "static/js/3.4818c08e.chunk.js": "/Rick-and-Morty/static/js/3.4818c08e.chunk.js",
-    "static/js/3.4818c08e.chunk.js.map": "/Rick-and-Morty/static/js/3.4818c08e.chunk.js.map",
+    "main.css": "/Rick-and-Morty/static/css/main.f6540818.chunk.css",
+    "main.js": "/Rick-and-Morty/static/js/main.0ab6a901.chunk.js",
+    "main.js.map": "/Rick-and-Morty/static/js/main.0ab6a901.chunk.js.map",
+    "runtime-main.js": "/Rick-and-Morty/static/js/runtime-main.f508c73a.js",
+    "runtime-main.js.map": "/Rick-and-Morty/static/js/runtime-main.f508c73a.js.map",
+    "static/js/2.6b081fb1.chunk.js": "/Rick-and-Morty/static/js/2.6b081fb1.chunk.js",
+    "static/js/2.6b081fb1.chunk.js.map": "/Rick-and-Morty/static/js/2.6b081fb1.chunk.js.map",
+    "static/js/3.56c165c4.chunk.js": "/Rick-and-Morty/static/js/3.56c165c4.chunk.js",
+    "static/js/3.56c165c4.chunk.js.map": "/Rick-and-Morty/static/js/3.56c165c4.chunk.js.map",
     "index.html": "/Rick-and-Morty/index.html",
-    "static/css/main.23147a8a.chunk.css.map": "/Rick-and-Morty/static/css/main.23147a8a.chunk.css.map",
-    "static/js/2.bb606597.chunk.js.LICENSE.txt": "/Rick-and-Morty/static/js/2.bb606597.chunk.js.LICENSE.txt"
+    "static/css/main.f6540818.chunk.css.map": "/Rick-and-Morty/static/css/main.f6540818.chunk.css.map",
+    "static/js/2.6b081fb1.chunk.js.LICENSE.txt": "/Rick-and-Morty/static/js/2.6b081fb1.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/Rick-and-Morty/static/media/rick-and-morty-portal-shoes-white-clothing-zavvi-23.ef93be45.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.4dff5e11.js",
-    "static/js/2.bb606597.chunk.js",
-    "static/css/main.23147a8a.chunk.css",
-    "static/js/main.1154a5a2.chunk.js"
+    "static/js/runtime-main.f508c73a.js",
+    "static/js/2.6b081fb1.chunk.js",
+    "static/css/main.f6540818.chunk.css",
+    "static/js/main.0ab6a901.chunk.js"
   ]
 }
