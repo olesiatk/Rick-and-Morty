@@ -143,7 +143,7 @@ export const Locations = ({ locations }) => {
 Locations.propTypes = {
   locations: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    nama: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
     dimension: PropTypes.string.isRequired,
   })).isRequired,

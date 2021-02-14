@@ -1,63 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 import Popper from '@material-ui/core/Popper';
-import Fade from '@material-ui/core/Fade';
+import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+
+const useStyles = makeStyles(theme => ({
+  paper: {
+    border: '1px solid',
+    padding: theme.spacing(1),
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
 
 export const PopUp = ({ character }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [open, setOpen] = React.useState(false);
-  const [placement, setPlacement] = React.useState();
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = ({ newPlacement }) => (event) => {
-    setAnchorEl(event.currentTarget);
-    setOpen(({ prev }) => placement !== newPlacement || !prev);
-    setPlacement(newPlacement);
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popper' : undefined;
+
   return (
-    <>
-      <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={350}>
-            <Paper elevation={3} style={{ padding: '15px' }}>
-              <Typography>
-                <img alt={character.name} src={character.image} />
-                <p>
-                  Name:
-                  {character.name}
-                </p>
-                <p>
-                  Status:
-                  {character.status}
-                </p>
-                <p>
-                  Gender:
-                  {character.gender}
-                </p>
-                <p>
-                  Species:
-                  {character.species}
-                </p>
-                <p>
-                  Location:
-                  {character.location.name}
-                </p>
-                {character.type && (
-                  <p>
-                    Type:
-                    {character.type}
-                  </p>
-                )}
-              </Typography>
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
-      <Button onClick={handleClick('right')}>
+    <div>
+      <Button
+        aria-describedby={id}
+        type="button"
+        onClick={handleClick}
+        onBlur={() => setAnchorEl(null)}
+      >
         <img
           alt={character.name}
           src={character.image}
@@ -66,7 +41,42 @@ export const PopUp = ({ character }) => {
           style={{ borderRadius: '10px' }}
         />
       </Button>
-    </>
+      <Popper id={id} open={open} anchorEl={anchorEl}>
+        <div className={classes.paper}>
+          <Paper elevation={3} style={{ padding: '15px' }}>
+            <div>
+              <img alt={character.name} src={character.image} />
+              <p>
+                Name:
+                {character.name}
+              </p>
+              <p>
+                Status:
+                {character.status}
+              </p>
+              <p>
+                Gender:
+                {character.gender}
+              </p>
+              <p>
+                Species:
+                {character.species}
+              </p>
+              <p>
+                Location:
+                {character.location.name}
+              </p>
+              {character.type && (
+                <p>
+                  Type:
+                  {character.type}
+                </p>
+              )}
+            </div>
+          </Paper>
+        </div>
+      </Popper>
+    </div>
   );
 };
 
@@ -83,4 +93,8 @@ PopUp.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+};
+
+PopUp.defaultProperties = {
+  type: '',
 };

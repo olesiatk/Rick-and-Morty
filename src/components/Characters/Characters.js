@@ -163,7 +163,7 @@ export const Characters = ({ characters }) => {
 Characters.propTypes = {
   characters: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    nama: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     gender: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
   })).isRequired,

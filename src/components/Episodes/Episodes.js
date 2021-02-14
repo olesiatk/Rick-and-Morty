@@ -117,8 +117,12 @@ export const Episodes = ({ episodes }) => {
 Episodes.propTypes = {
   episodes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
-    nama: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     episode: PropTypes.string.isRequired,
-    air_data: PropTypes.string.isRequired,
+    air_data: PropTypes.string,
   })).isRequired,
+};
+
+Episodes.defaultProperties = {
+  air_data: '',
 };

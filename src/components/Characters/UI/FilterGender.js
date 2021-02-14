@@ -18,7 +18,7 @@ export const FilterGender = ({ gender, handleChange }) => (
       </MenuItem>
       <MenuItem value="Male">Male</MenuItem>
       <MenuItem value="Female">Female</MenuItem>
-      <MenuItem value="genderless">genderless</MenuItem>
+      <MenuItem value="Genderless">Genderless</MenuItem>
       <MenuItem value="unknown">unknown</MenuItem>
     </Select>
   </FormControl>

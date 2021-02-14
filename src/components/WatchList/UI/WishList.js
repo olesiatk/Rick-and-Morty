@@ -6,37 +6,32 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import Checkbox from '@material-ui/core/Checkbox';
 import CloseIcon from '@material-ui/icons/Close';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 export const WishList = ({ list, changeTitleStatus, deleteTitle }) => (
   <List style={{ padding: 20 }}>
-    {list.map(title => (
+    {list.map(item => (
       <ListItem
-        key={title.id}
+        key={item.title}
         style={{
           borderBottom: '1px solid grey',
           display: 'flex',
           justifyContent: 'space-between',
         }}
       >
-        <FormControlLabel
-          control={(
-            <Checkbox
-              color="primary"
-              edge="start"
-              onChange={() => changeTitleStatus(title.id)}
-              checked={title.completed}
-            />
-          )}
-          label={title.title}
+        <Checkbox
+          color="primary"
+          edge="start"
+          onChange={() => changeTitleStatus(item.id)}
+          checked={item.completed}
         />
+        <label style={{ textAligt: 'start' }}>{item.title}</label>
         <Button
           color="secondary"
           style={{
             width: 100, textAlign: 'flex-end',
           }}
           startIcon={<CloseIcon />}
-          onClick={() => deleteTitle(title.id)}
+          onClick={() => deleteTitle(item.id)}
         />
       </ListItem>
     ))}
@@ -44,7 +39,17 @@ export const WishList = ({ list, changeTitleStatus, deleteTitle }) => (
 );
 
 WishList.propTypes = {
-  list: PropTypes.string.isRequired,
+  list: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired,
+  }).isRequired).isRequired,
   changeTitleStatus: PropTypes.func.isRequired,
   deleteTitle: PropTypes.func.isRequired,
 };
+
+// (PropTypes.shape({
+//   id: PropTypes.number.isRequired,
+//   title: PropTypes.string.isRequired,
+//   completed: PropTypes.bool.isRequired,
+// })).

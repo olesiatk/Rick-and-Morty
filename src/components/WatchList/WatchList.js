@@ -25,7 +25,7 @@ export const WatchList = () => {
   const addTitle = () => {
     if (title.trim()) {
       const newTitle = {
-        id: +new Date(),
+        id: Math.random(),
         title,
         completed: false,
       };
@@ -44,12 +44,12 @@ export const WatchList = () => {
     setList(prevList => prevList.map((item) => {
       if (item.id === titleId) {
         return {
-          ...title,
-          completed: !title.completed,
+          ...item,
+          completed: !item.completed,
         };
       }
 
-      return title;
+      return item;
     }));
   };
 
