@@ -1,70 +1,22 @@
-# Getting Started with Create React App
+# Solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[SOLUTION](https://olesiatk.github.io/Rick-and-Morty/).
 
-## Available Scripts
+## Task Description
 
-In the project directory, you can run:
+The goal of the task is to create a react web application that will display all the information about the Rick and Morty Tv series. It Should have 4 tabs in the navigation panel: Characters, Episodes, Locations, My watch list.
 
-### `npm start`
+### 1) 
+The 	Characters page should have a list of all characters that are in the tv series (Implement pagination for that. So that there are 	10-character cards per page). The list should have a filter by 	“species”, “status”, “gender” fields. The character card should have a character picture (if any), and some additional info about that character (your choice). When you click on the character card – the popup should be opened where will be all character info.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 2) 
+The episode page should be really similar to the character page, the episodes should have filtered by “name” field (if you will have inspiration please add other filters). Make this a table, also there should be 25 episodes per page(pagination). 	
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 3)
+The Locations page should also be a table with pagination and should have filtered by “name”, “type”, “dimension” field.
+ 	
+### 4) 
+My watch list should have a simple to do like functional there should be an input field where user can write down a new episode to watch later. Use local storage to store the To Do items. The toDo list item should have a remove button to remove it from the list and the checkbox to mark it as complete(when the page has reloaded the status of the task and the list should not change).
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Here is the list of [APIs](https://rickandmortyapi.com/documentation/#introduction)
